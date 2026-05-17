@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Merv Graphs</title>
+
+<!-- PWA / iOS Home Screen -->
+<!-- ═══ PWA / iOS HOME SCREEN ═══ -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Merv Graphs" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="theme-color" content="#0a0612" />
+<meta name="description" content="Merv Graphs — Interactive Chart Builder" />
+
+<!-- iOS touch icons (PNG, required for Add to Home Screen) -->
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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" />
+
+<!-- Standard favicon -->
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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" />
+
+<!-- Inline Web App Manifest (Chrome/Android PWA install) -->
+<link rel="manifest" id="pwa-manifest" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --maroon: #800020; --maroon-light: #a8002a; --maroon-dark: #560015; --maroon-muted: rgba(128,0,32,0.13);
+  --royal: #2b4ecc; --royal-light: #4169e1; --royal-dark: #1a328f; --royal-muted: rgba(43,78,204,0.13);
+  --bg: #0a0612; --bg2: #110a1e; --bg3: #1a0f2e;
+  --surface: rgba(255,255,255,0.04); --surface2: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.16);
+  --text: #f0ecfa; --text2: #a898c8; --text3: #5a4a7a;
+  --radius: 12px; --radius-sm: 7px;
+  --glow-m: 0 0 20px rgba(128,0,32,0.4); --glow-r: 0 0 20px rgba(65,105,225,0.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(128,0,32,0.055) 1px,transparent 1px),linear-gradient(90deg,rgba(43,78,204,0.055) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;top:-250px;left:-250px;width:650px;height:650px;background:radial-gradient(circle,rgba(128,0,32,0.16) 0%,transparent 70%);pointer-events:none;z-index:0;animation:orb1 14s ease-in-out infinite alternate;}
+@keyframes orb1{from{transform:translate(0,0);}to{transform:translate(420px,320px);}}
+.orb2{position:fixed;bottom:-250px;right:-250px;width:750px;height:750px;background:radial-gradient(circle,rgba(43,78,204,0.14) 0%,transparent 70%);pointer-events:none;z-index:0;animation:orb2 17s ease-in-out infinite alternate;}
+@keyframes orb2{from{transform:translate(0,0);}to{transform:translate(-380px,-260px);}}
+
+.wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:28px 20px 80px;}
+
+/* HEADER */
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--border);}
+.brand{display:flex;align-items:center;gap:14px;}
+.brand-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--maroon),var(--royal));border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 18px rgba(128,0,32,0.4);}
+.brand-name{font-family:'DM Serif Display',serif;font-size:28px;background:linear-gradient(90deg,#f0a0b8,#a0b8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.brand-sub{font-size:11px;color:var(--text3);letter-spacing:0.09em;text-transform:uppercase;margin-top:1px;}
+.header-stats{display:flex;gap:22px;}
+.hstat{text-align:right;}
+.hstat-val{font-family:'DM Mono',monospace;font-size:21px;color:var(--text);font-weight:500;}
+.hstat-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.09em;}
+
+/* TABS */
+.tab-bar{display:flex;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:5px;margin-bottom:14px;}
+.tab-btn{flex:1;padding:8px 10px;border:none;border-radius:8px;background:transparent;color:var(--text2);font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.tab-btn:hover{background:var(--surface2);color:var(--text);}
+.tab-btn.active{background:linear-gradient(135deg,var(--maroon-dark),var(--royal-dark));color:#fff;box-shadow:0 2px 12px rgba(100,20,80,0.4);}
+
+/* PANEL */
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:14px;backdrop-filter:blur(10px);display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.panel-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);}
+.btn-group{display:flex;gap:6px;flex-wrap:wrap;}
+
+.type-btn{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:transparent;color:var(--text2);font-size:12px;font-family:'Outfit',sans-serif;font-weight:500;cursor:pointer;transition:all 0.16s;white-space:nowrap;}
+.type-btn:hover{border-color:var(--royal-light);color:#a0b8ff;background:var(--royal-muted);}
+.type-btn.active{border-color:var(--royal-light);background:var(--royal-muted);color:#a0b8ff;box-shadow:var(--glow-r);}
+
+.color-btn{padding:7px 13px;border-radius:var(--radius-sm);border:1px solid var(--border2);font-size:12px;font-family:'Outfit',sans-serif;font-weight:500;cursor:pointer;transition:all 0.16s;}
+.color-btn.maroon{color:#f4b8c8;background:var(--maroon-muted);}
+.color-btn.maroon.active,.color-btn.maroon:hover{border-color:var(--maroon);box-shadow:var(--glow-m);background:rgba(128,0,32,0.22);}
+.color-btn.royal{color:#a0b8ff;background:var(--royal-muted);}
+.color-btn.royal.active,.color-btn.royal:hover{border-color:var(--royal-light);box-shadow:var(--glow-r);background:rgba(43,78,204,0.22);}
+.color-btn.dual{color:#d0c0f0;background:rgba(100,50,150,0.12);}
+.color-btn.dual.active,.color-btn.dual:hover{border-color:#7050b0;box-shadow:0 0 20px rgba(100,50,180,0.3);background:rgba(100,50,150,0.26);}
+
+.divider-v{width:1px;height:26px;background:var(--border);}
+
+/* INPUT PANEL */
+.input-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:14px;backdrop-filter:blur(10px);}
+.input-row{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;}
+.field{display:flex;flex-direction:column;gap:4px;}
+.field label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.09em;}
+.field input,.field select{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);font-family:'DM Mono',monospace;font-size:13px;padding:7px 11px;width:88px;outline:none;transition:border-color 0.16s,box-shadow 0.16s;}
+.field select{width:110px;cursor:pointer;}
+.field input.wide{width:120px;}
+.field input:focus,.field select:focus{border-color:var(--royal-light);box-shadow:0 0 0 2px rgba(65,105,225,0.2);}
+.field input[type=color]{width:50px;height:36px;padding:3px;cursor:pointer;border-radius:6px;}
+
+.btn-add{display:flex;align-items:center;gap:7px;padding:9px 20px;background:linear-gradient(135deg,var(--maroon),var(--maroon-light));color:#fff;border:none;border-radius:var(--radius-sm);font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.16s;box-shadow:0 2px 12px rgba(128,0,32,0.4);}
+.btn-add:hover{background:linear-gradient(135deg,var(--maroon-light),#c8003a);box-shadow:0 4px 22px rgba(128,0,32,0.6);transform:translateY(-1px);}
+.btn-add:active{transform:translateY(0);}
+.btn-sec{display:flex;align-items:center;gap:6px;padding:8px 14px;background:transparent;color:var(--text2);border:1px solid var(--border2);border-radius:var(--radius-sm);font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.16s;}
+.btn-sec:hover{color:#f4b8c8;border-color:var(--maroon);background:var(--maroon-muted);}
+.btn-royal{border-color:var(--royal-light) !important;color:#a0b8ff !important;}
+.btn-royal:hover{background:var(--royal-muted) !important;border-color:var(--royal-light) !important;}
+
+/* CSV IMPORT */
+.import-row{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.import-label{font-size:11px;color:var(--text3);}
+#csvFile{font-size:12px;color:var(--text2);background:var(--bg3);border:1px dashed var(--border2);border-radius:var(--radius-sm);padding:6px 10px;cursor:pointer;font-family:'Outfit',sans-serif;}
+#csvFile::file-selector-button{background:var(--royal-muted);border:1px solid var(--royal-light);color:#a0b8ff;border-radius:4px;padding:3px 10px;font-family:'Outfit',sans-serif;font-size:12px;cursor:pointer;margin-right:8px;}
+
+/* CHART */
+.chart-container{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;backdrop-filter:blur(10px);position:relative;overflow:hidden;}
+.chart-container::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--maroon),transparent 40%,transparent 60%,var(--royal-light));}
+.chart-title-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.chart-title{font-size:13px;font-weight:600;color:var(--text2);}
+.chart-actions{display:flex;gap:8px;}
+.chart-inner{position:relative;width:100%;height:420px;}
+
+/* QUADRANT LABELS */
+.quad-labels{position:absolute;inset:0;pointer-events:none;font-size:11px;font-family:'DM Mono',monospace;}
+.ql{position:absolute;padding:4px 8px;border-radius:4px;opacity:0.55;font-weight:500;}
+.ql-I{top:8px;right:8px;color:#a0b8ff;background:rgba(43,78,204,0.12);}
+.ql-II{top:8px;left:8px;color:#f4b0c4;background:rgba(128,0,32,0.12);}
+.ql-III{bottom:8px;left:8px;color:#f4b0c4;background:rgba(128,0,32,0.12);}
+.ql-IV{bottom:8px;right:8px;color:#a0b8ff;background:rgba(43,78,204,0.12);}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:14px;}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;transition:border-color 0.16s;}
+.stat-card:hover{border-color:var(--border2);}
+.stat-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.09em;margin-bottom:5px;}
+.stat-val{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;color:var(--text);}
+.stat-val.mv{color:#f0a0b8;} .stat-val.rv{color:#a0b8ff;}
+
+/* TRENDLINE INFO */
+.trend-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 16px;margin-bottom:14px;display:none;align-items:center;gap:16px;flex-wrap:wrap;}
+.trend-bar.show{display:flex;}
+.trend-item{font-size:12px;color:var(--text2);}
+.trend-item span{font-family:'DM Mono',monospace;color:#d0b8ff;}
+
+/* TABLE */
+.table-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;}
+.table-header{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);background:var(--surface2);}
+.table-title{font-size:13px;font-weight:600;color:var(--text2);}
+.table-wrap{overflow-x:auto;max-height:260px;overflow-y:auto;}
+table{width:100%;border-collapse:collapse;}
+thead th{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);font-weight:500;padding:9px 14px;text-align:left;border-bottom:1px solid var(--border);background:var(--surface2);position:sticky;top:0;z-index:2;}
+tbody tr{transition:background 0.1s;}
+tbody tr:hover td{background:rgba(255,255,255,0.035);}
+tbody td{padding:9px 14px;font-size:13px;color:var(--text);border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:last-child td{border-bottom:none;}
+.row-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);}
+.dot-cell{display:flex;align-items:center;gap:8px;}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.edit-input{background:var(--bg3);border:1px solid var(--border2);border-radius:5px;color:var(--text);font-family:'DM Mono',monospace;font-size:12px;padding:4px 7px;width:75px;outline:none;transition:border-color 0.14s;}
+.edit-input:focus{border-color:var(--royal-light);}
+.edit-input.narrow{width:56px;}
+.btn-save{padding:4px 10px;background:var(--royal-muted);border:1px solid var(--royal-light);border-radius:4px;color:#a0b8ff;font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;cursor:pointer;margin-right:4px;transition:all 0.13s;}
+.btn-save:hover{background:rgba(43,78,204,0.3);}
+.btn-del{padding:4px 8px;background:var(--maroon-muted);border:1px solid var(--maroon);border-radius:4px;color:#f4b0c4;font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all 0.13s;}
+.btn-del:hover{background:rgba(128,0,32,0.3);}
+.empty-state{text-align:center;padding:36px;color:var(--text3);font-size:13px;}
+
+/* HISTORY */
+.history-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.history-list{max-height:180px;overflow-y:auto;}
+.history-item{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;color:var(--text2);cursor:pointer;transition:background 0.1s;}
+.history-item:hover{background:var(--surface2);}
+.history-item:last-child{border-bottom:none;}
+.hist-name{font-weight:500;color:var(--text);}
+.hist-meta{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;}
+.btn-restore{padding:3px 9px;background:var(--royal-muted);border:1px solid var(--royal-light);border-radius:4px;color:#a0b8ff;font-family:'Outfit',sans-serif;font-size:11px;cursor:pointer;}
+
+/* ANNOTATION PANEL */
+.annotation-form{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;padding-top:10px;margin-top:10px;border-top:1px solid var(--border);}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;right:28px;background:rgba(20,12,36,0.95);border:1px solid var(--border2);color:var(--text);font-size:13px;font-weight:500;padding:11px 18px;border-radius:var(--radius-sm);z-index:999;transform:translateY(80px);opacity:0;transition:all 0.28s ease;pointer-events:none;backdrop-filter:blur(12px);}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.success{border-color:var(--royal-light);}
+.toast.error{border-color:var(--maroon);}
+
+/* MODAL */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(5,2,12,0.7);z-index:100;backdrop-filter:blur(4px);align-items:center;justify-content:center;}
+.modal-bg.open{display:flex;}
+.modal{background:#160e28;border:1px solid var(--border2);border-radius:var(--radius);padding:24px;width:340px;max-width:94vw;}
+.modal h3{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:16px;color:var(--text);}
+.modal-field{margin-bottom:12px;}
+.modal-field label{display:block;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px;}
+.modal-field input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);font-family:'DM Mono',monospace;font-size:13px;padding:8px 12px;outline:none;}
+.modal-field input:focus{border-color:var(--royal-light);}
+.modal-actions{display:flex;gap:8px;margin-top:18px;}
+.btn-modal-save{flex:1;padding:9px;background:linear-gradient(135deg,var(--maroon),var(--royal-dark));color:#fff;border:none;border-radius:var(--radius-sm);font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
+.btn-modal-cancel{padding:9px 16px;background:transparent;color:var(--text2);border:1px solid var(--border2);border-radius:var(--radius-sm);font-family:'Outfit',sans-serif;font-size:13px;cursor:pointer;}
+
+/* EXPORT BAR */
+.export-bar{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* SCATTER CONNECT PANEL */
+.connect-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:14px;backdrop-filter:blur(10px);display:none;flex-wrap:wrap;gap:14px;align-items:flex-start;}
+.connect-ds{display:flex;flex-direction:column;gap:8px;padding:10px 14px;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);min-width:220px;}
+.connect-ds-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.09em;color:var(--text2);}
+.connect-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.connect-select{background:var(--bg3);border:1px solid var(--border2);border-radius:5px;color:var(--text);font-family:'DM Mono',monospace;font-size:12px;padding:5px 8px;outline:none;cursor:pointer;}
+.connect-select:focus{border-color:var(--royal-light);}
+.connect-color{width:36px;height:28px;border-radius:5px;border:1px solid var(--border2);padding:2px;cursor:pointer;background:transparent;}
+
+@media(max-width:620px){
+  header{flex-direction:column;gap:14px;align-items:flex-start;}
+  .header-stats{align-self:stretch;justify-content:space-between;}
+  .tab-btn span.tab-label{display:none;}
+  .chart-inner{height:300px;}
+}
+</style>
+</head>
+<body>
+<div class="orb2"></div>
+
+<div class="wrap">
+
+<!-- HEADER -->
+<header>
+  <div class="brand">
+    <div class="brand-icon">📊</div>
+    <div>
+      <div class="brand-name">Merv Graphs</div>
+      <div class="brand-sub">Interactive Chart Builder</div>
+    </div>
+  </div>
+  <div class="header-stats">
+    <div class="hstat"><div class="hstat-val" id="hPoints">0</div><div class="hstat-label">Points</div></div>
+    <div class="hstat"><div class="hstat-val" id="hAvg">—</div><div class="hstat-label">Average Y</div></div>
+    <div class="hstat"><div class="hstat-val" id="hSets">1</div><div class="hstat-label">Datasets</div></div>
+  </div>
+</header>
+
+<!-- CHART TYPE TABS -->
+<div class="tab-bar">
+  <button class="tab-btn active" data-type="bar" onclick="setType('bar',this)">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="6" width="3" height="7" rx="1" fill="currentColor"/><rect x="5.5" y="3" width="3" height="10" rx="1" fill="currentColor"/><rect x="10" y="1" width="3" height="12" rx="1" fill="currentColor"/></svg>
+    <span class="tab-label">Bar</span>
+  </button>
+  <button class="tab-btn" data-type="line" onclick="setType('line',this)">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="1,11 4,6 7,8 10,3 13,5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="tab-label">Line</span>
+  </button>
+  <button class="tab-btn" data-type="scatter" onclick="setType('scatter',this)">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="3" cy="10" r="1.8" fill="currentColor"/><circle cx="9" cy="4" r="1.8" fill="currentColor"/><circle cx="6" cy="7" r="1.8" fill="currentColor"/><circle cx="12" cy="9" r="1.8" fill="currentColor"/></svg>
+    <span class="tab-label">Scatter (4Q)</span>
+  </button>
+  <button class="tab-btn" data-type="horizontalBar" onclick="setType('horizontalBar',this)">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="7" height="3" rx="1" fill="currentColor"/><rect x="1" y="5.5" width="11" height="3" rx="1" fill="currentColor"/><rect x="1" y="10" width="5" height="3" rx="1" fill="currentColor"/></svg>
+    <span class="tab-label">Horiz. Bar</span>
+  </button>
+  <button class="tab-btn" data-type="radar" onclick="setType('radar',this)">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="7,1 13,10 1,10" stroke="currentColor" stroke-width="1.5" fill="none"/><polygon points="7,4 10.5,9.5 3.5,9.5" stroke="currentColor" stroke-width="1" fill="none" opacity="0.5"/></svg>
+    <span class="tab-label">Radar</span>
+  </button>
+  <button class="tab-btn" data-type="doughnut" onclick="setType('doughnut',this)">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="2.5" fill="none" stroke-dasharray="12 22" stroke-dashoffset="-3"/><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1" fill="none"/></svg>
+    <span class="tab-label">Doughnut</span>
+  </button>
+  <button class="tab-btn" data-type="bubble" onclick="setType('bubble',this)">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="9" r="2.5" fill="currentColor" opacity="0.7"/><circle cx="10" cy="5" r="3.5" fill="currentColor" opacity="0.5"/><circle cx="7" cy="11" r="1.5" fill="currentColor"/></svg>
+    <span class="tab-label">Bubble</span>
+  </button>
+</div>
+
+<!-- CONTROLS -->
+<div class="panel">
+  <span class="panel-label">Color</span>
+  <div class="btn-group">
+    <button class="color-btn maroon active" onclick="setColor('maroon',this)">● Maroon</button>
+    <button class="color-btn royal" onclick="setColor('royal',this)">● Royal Blue</button>
+    <button class="color-btn dual" onclick="setColor('dual',this)">◑ Both</button>
+  </div>
+  <div class="divider-v"></div>
+  <span class="panel-label">Options</span>
+  <div class="btn-group">
+    <button class="type-btn" id="btnTrend" onclick="toggleTrend()">📈 Trendline</button>
+    <button class="type-btn" id="btnGrid" onclick="toggleGrid()">▦ Grid</button>
+    <button class="type-btn" id="btnSmooth" onclick="toggleSmooth()">〜 Smooth</button>
+    <button class="type-btn" id="btnLabels" onclick="toggleLabels()">🏷 Labels</button>
+    <button class="type-btn" id="btnFill" onclick="toggleFill()">▩ Fill</button>
+  </div>
+  <div class="divider-v"></div>
+  <div class="export-bar">
+    <button class="btn-sec btn-royal" onclick="exportPNG()">⬇ PNG</button>
+    <button class="btn-sec btn-royal" onclick="exportCSV()">⬇ CSV</button>
+    <button class="btn-sec" onclick="saveSnapshot()">💾 Save</button>
+  </div>
+</div>
+
+<!-- INPUT -->
+<div class="input-panel">
+  <div class="input-row">
+    <div class="field"><label>Label</label><input class="wide" id="inLabel" placeholder="e.g. Alpha" value="A" /></div>
+    <div class="field"><label>X value</label><input id="inX" type="number" step="any" value="1" /></div>
+    <div class="field"><label>Y value</label><input id="inY" type="number" step="any" value="" /></div>
+    <div class="field" id="bubbleSizeField" style="display:none"><label>Size (bubble)</label><input id="inR" type="number" step="any" value="10" min="1" max="80" /></div>
+    <div class="field"><label>Point color</label><input id="inColor" type="color" value="#800020" /></div>
+    <div class="field"><label>Dataset</label>
+      <select id="inDataset">
+        <option value="0">Dataset 1</option>
+        <option value="1">Dataset 2</option>
+        <option value="2">Dataset 3</option>
+      </select>
+    </div>
+    <button class="btn-add" onclick="addPoint()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+      Add Point
+    </button>
+    <button class="btn-sec" onclick="openAnnotation()">📌 Annotate</button>
+    <button class="btn-sec" onclick="undoLast()">↩ Undo</button>
+    <button class="btn-sec" onclick="clearAll()">✕ Clear</button>
+  </div>
+
+  <div class="import-row">
+    <span class="import-label">Import CSV:</span>
+    <input type="file" id="csvFile" accept=".csv" onchange="importCSV(event)" />
+    <span class="import-label" style="color:var(--text3)">Columns: label, x, y (optional: r, color)</span>
+    <button class="btn-sec btn-royal" onclick="loadSampleData()">📋 Load Sample</button>
+  </div>
+</div>
+
+<!-- SCATTER CONNECT LINES PANEL -->
+<div class="connect-panel" id="scatterConnectPanel">
+  <div style="width:100%;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:2px;">🔗 Connect Points with Lines — choose which datasets to connect</div>
+  <!-- Dataset 1 -->
+  <div class="connect-ds">
+    <div class="connect-ds-title" style="color:#f4b0c4;">● Dataset 1</div>
+    <div class="connect-row">
+      <button class="type-btn" id="connectBtn-0" onclick="toggleConnect(0)">Connect</button>
+      <select class="connect-select" onchange="setConnectStyle(0,this.value)">
+        <option value="solid">— Solid</option>
+        <option value="dashed">- - Dashed</option>
+        <option value="dotted">· · Dotted</option>
+        <option value="curved">〜 Curved</option>
+      </select>
+      <input type="color" class="connect-color" value="#800020" onchange="setConnectColor(0,this.value)" title="Line color" />
+    </div>
+  </div>
+  <!-- Dataset 2 -->
+  <div class="connect-ds">
+    <div class="connect-ds-title" style="color:#a0b8ff;">● Dataset 2</div>
+    <div class="connect-row">
+      <button class="type-btn" id="connectBtn-1" onclick="toggleConnect(1)">Connect</button>
+      <select class="connect-select" onchange="setConnectStyle(1,this.value)">
+        <option value="solid">— Solid</option>
+        <option value="dashed">- - Dashed</option>
+        <option value="dotted">· · Dotted</option>
+        <option value="curved">〜 Curved</option>
+      </select>
+      <input type="color" class="connect-color" value="#4169e1" onchange="setConnectColor(1,this.value)" title="Line color" />
+    </div>
+  </div>
+  <!-- Dataset 3 -->
+  <div class="connect-ds">
+    <div class="connect-ds-title" style="color:#c0a0f0;">● Dataset 3</div>
+    <div class="connect-row">
+      <button class="type-btn" id="connectBtn-2" onclick="toggleConnect(2)">Connect</button>
+      <select class="connect-select" onchange="setConnectStyle(2,this.value)">
+        <option value="solid">— Solid</option>
+        <option value="dashed">- - Dashed</option>
+        <option value="dotted">· · Dotted</option>
+        <option value="curved">〜 Curved</option>
+      </select>
+      <input type="color" class="connect-color" value="#7050cc" onchange="setConnectColor(2,this.value)" title="Line color" />
+    </div>
+  </div>
+</div>
+
+<!-- CHART -->
+<div class="chart-container">
+  <div class="chart-title-row">
+    <span class="chart-title" id="chartTitle">Merv Graphs — Bar Chart</span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <span style="font-size:11px;color:var(--text3)" id="quadInfo"></span>
+    </div>
+  </div>
+  <div class="chart-inner" id="chartWrap">
+    <canvas id="myChart" role="img" aria-label="Interactive Merv Graphs chart"></canvas>
+    <div id="quadrantLabels" class="quad-labels" style="display:none">
+      <div class="ql ql-I">Q-I (+,+)</div>
+      <div class="ql ql-II">Q-II (−,+)</div>
+      <div class="ql ql-III">Q-III (−,−)</div>
+      <div class="ql ql-IV">Q-IV (+,−)</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRENDLINE INFO -->
+<div class="trend-bar" id="trendBar">
+  <span style="font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;">Trendline</span>
+  <span class="trend-item">Slope: <span id="tSlope">—</span></span>
+  <span class="trend-item">Intercept: <span id="tIntercept">—</span></span>
+  <span class="trend-item">R²: <span id="tR2">—</span></span>
+  <span class="trend-item">Equation: <span id="tEq">—</span></span>
+</div>
+
+<!-- STATS -->
+<div class="stats-grid" id="statsGrid"></div>
+
+<!-- TABLE -->
+<div class="table-section">
+  <div class="table-header">
+    <span class="table-title">📋 Data Points</span>
+    <div style="display:flex;gap:8px;">
+      <button class="btn-sec" style="font-size:11px;padding:5px 10px;" onclick="sortPoints('label')">Sort A-Z</button>
+      <button class="btn-sec" style="font-size:11px;padding:5px 10px;" onclick="sortPoints('y')">Sort Y↓</button>
+      <button class="btn-sec" style="font-size:11px;padding:5px 10px;" onclick="sortPoints('x')">Sort X↑</button>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Color</th><th>Label</th><th>X</th><th>Y</th><th>R</th><th>Dataset</th><th>Actions</th></tr></thead>
+      <tbody id="pointsBody"></tbody>
+    </table>
+    <div id="emptyState" class="empty-state">No data yet — add points or load sample data above.</div>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div class="table-header" style="border-radius:var(--radius) var(--radius) 0 0;border:1px solid var(--border);border-bottom:none;margin-top:14px;">
+  <span class="table-title">💾 Saved Snapshots</span>
+</div>
+<div class="history-section" style="border-radius:0 0 var(--radius) var(--radius)">
+  <div class="history-list" id="historyList"><div class="empty-state" style="padding:18px;">No snapshots saved yet.</div></div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- ANNOTATION MODAL -->
+<div class="modal-bg" id="annotationModal">
+  <div class="modal">
+    <h3>Add Annotation</h3>
+    <div class="modal-field"><label>Note text</label><input id="annotText" placeholder="e.g. Peak value" /></div>
+    <div class="modal-field"><label>X position</label><input id="annotX" type="number" placeholder="0" /></div>
+    <div class="modal-field"><label>Y position</label><input id="annotY" type="number" placeholder="0" /></div>
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="closeAnnotation()">Cancel</button>
+      <button class="btn-modal-save" onclick="addAnnotation()">Add Annotation</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+/* ── STATE ─────────────────────────────── */
+let chartType = 'bar';
+let colorMode = 'maroon';
+let chart = null;
+let showTrend = false;
+let showGrid = true;
+let showSmooth = true;
+let showDataLabels = false;
+let showFill = true;
+let history = [];
+let snapshots = [];
+
+// 3 datasets; each point: {label, x, y, r, color, ds}
+let points = [
+  {label:'A',x:1,y:14,r:10,color:'#800020',ds:0},
+  {label:'B',x:2,y:28,r:16,color:'#800020',ds:0},
+  {label:'C',x:3,y:19,r:12,color:'#800020',ds:0},
+  {label:'D',x:4,y:35,r:20,color:'#4169e1',ds:1},
+  {label:'E',x:5,y:22,r:14,color:'#4169e1',ds:1},
+  {label:'F',x:-3,y:8,r:8,color:'#7050cc',ds:2},
+  {label:'G',x:-1,y:-12,r:10,color:'#7050cc',ds:2},
+];
+
+const DS_COLORS = ['#800020','#4169e1','#7050cc'];
+const DS_NAMES  = ['Dataset 1','Dataset 2','Dataset 3'];
+
+// connect-lines per dataset: { 0: {on:true, style:'solid', color:'#800020'}, ... }
+let connectLines = {
+  0:{on:false,style:'solid',color:'#800020'},
+  1:{on:false,style:'solid',color:'#4169e1'},
+  2:{on:false,style:'solid',color:'#7050cc'}
+};
+
+/* ── COLORS ─────────────────────────────── */
+function getPointColor(p,i){
+  if(colorMode==='maroon') return '#800020';
+  if(colorMode==='royal')  return '#4169e1';
+  if(colorMode==='dual')   return DS_COLORS[p.ds] || (i%2===0?'#800020':'#4169e1');
+  return p.color||'#800020';
+}
+
+/* ── CHART TYPE ─────────────────────────── */
+function setType(t,btn){
+  chartType=t;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('bubbleSizeField').style.display = t==='bubble'?'flex':'none';
+  document.getElementById('quadrantLabels').style.display = t==='scatter'?'block':'none';
+  document.getElementById('scatterConnectPanel').style.display = t==='scatter'?'flex':'none';
+  document.getElementById('chartTitle').textContent = 'Merv Graphs — '+{
+    bar:'Bar Chart',line:'Line Chart',scatter:'Four-Quadrant Scatter',
+    horizontalBar:'Horizontal Bar Chart',radar:'Radar Chart',
+    doughnut:'Doughnut Chart',bubble:'Bubble Chart'
+  }[t];
+  document.getElementById('quadInfo').textContent = t==='scatter'?'Axes cross at origin (0,0)':'';
+  renderChart();
+}
+
+function setColor(m,btn){
+  colorMode=m;
+  document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderChart();
+}
+
+/* ── TOGGLES ─────────────────────────────── */
+function toggleTrend(){showTrend=!showTrend;styleToggle('btnTrend',showTrend);renderChart();}
+function toggleGrid(){showGrid=!showGrid;styleToggle('btnGrid',showGrid);renderChart();}
+function toggleSmooth(){showSmooth=!showSmooth;styleToggle('btnSmooth',showSmooth);renderChart();}
+function toggleLabels(){showDataLabels=!showDataLabels;styleToggle('btnLabels',showDataLabels);renderChart();}
+function toggleFill(){showFill=!showFill;styleToggle('btnFill',showFill);renderChart();}
+function styleToggle(id,on){const b=document.getElementById(id);b.style.borderColor=on?'#4169e1':'';b.style.color=on?'#a0b8ff':'';}
+
+/* ── CONNECT LINES (scatter) ────────────── */
+function toggleConnect(di){
+  connectLines[di].on=!connectLines[di].on;
+  const btn=document.getElementById('connectBtn-'+di);
+  if(btn){btn.style.borderColor=connectLines[di].on?'#a0b8ff':'';btn.style.background=connectLines[di].on?'rgba(65,105,225,0.18)':'';}
+  renderChart();
+}
+function setConnectStyle(di,val){connectLines[di].style=val;if(connectLines[di].on) renderChart();}
+function setConnectColor(di,val){connectLines[di].color=val;if(connectLines[di].on) renderChart();}
+function buildDatasets(){
+  const gridColor = showGrid ? 'rgba(255,255,255,0.07)' : 'transparent';
+  const tickColor = '#5a4a7a';
+  const monoFont = {family:"'DM Mono', monospace",size:11};
+
+  // group by ds index
+  const groups = [0,1,2].map(di => points.filter(p=>p.ds===di));
+
+  if(chartType==='scatter'){
+    const scatterDss = groups.map((g,di)=>{
+      if(!g.length) return null;
+      const bgc = g.map((p,i)=>getPointColor(p,i));
+      return {
+        label: DS_NAMES[di],
+        data: g.map(p=>({x:p.x,y:p.y,label:p.label})),
+        backgroundColor: bgc,
+        borderColor: bgc,
+        pointRadius: 5, pointHoverRadius: 8, borderWidth: 2,
+        type:'scatter'
+      };
+    }).filter(Boolean);
+
+    // inject connecting line overlays per dataset
+    groups.forEach((g,di)=>{
+      if(!g.length || !connectLines[di]?.on) return;
+      const cl=connectLines[di];
+      // sort by x for natural left-to-right connection
+      const sorted=[...g].sort((a,b)=>a.x-b.x);
+      const dash = cl.style==='dashed'?[6,4]:cl.style==='dotted'?[2,4]:[];
+      scatterDss.push({
+        label: DS_NAMES[di]+' (line)',
+        data: sorted.map(p=>({x:p.x,y:p.y})),
+        type:'line',
+        borderColor: cl.color,
+        borderWidth: 2,
+        borderDash: dash,
+        pointRadius: 0,
+        tension: cl.style==='curved'?0.4:0,
+        fill: false,
+        showLine: true
+      });
+    });
+
+    return scatterDss;
+  }
+
+  if(chartType==='bubble'){
+    return groups.filter(g=>g.length).map((g,di)=>{
+      const bgc = g.map((p,i)=>getPointColor(p,i)+'cc');
+      return {
+        label: DS_NAMES[di],
+        data: g.map(p=>({x:p.x,y:p.y,r:Math.max(4,Math.min(40,p.r||10)),label:p.label})),
+        backgroundColor: bgc,
+        borderColor: bgc.map(c=>c.slice(0,7)),
+        borderWidth: 2
+      };
+    });
+  }
+
+  if(chartType==='radar'||chartType==='doughnut'){
+    const allLabels = points.map(p=>p.label);
+    const allY = points.map(p=>p.y);
+    const bgc = points.map((p,i)=>getPointColor(p,i)+'bb');
+    const bdc = points.map((p,i)=>getPointColor(p,i));
+    return [{label:'Values',data:allY,backgroundColor:bgc,borderColor:bdc,borderWidth:2}];
+  }
+
+  // bar / line / horizontalBar — one dataset per group
+  return groups.filter(g=>g.length).map((g,di)=>{
+    const bgc = g.map((p,i)=>getPointColor(p,i)+'cc');
+    const bdc = g.map((p,i)=>getPointColor(p,i));
+    const base = {
+      label: DS_NAMES[di],
+      data: g.map(p=>p.y),
+      backgroundColor: bgc,
+      borderColor: bdc,
+      borderWidth: 2,
+    };
+    if(chartType==='line'){
+      return {...base,
+        pointRadius:4, pointHoverRadius:7,
+        tension: showSmooth ? 0.4 : 0,
+        fill: showFill ? 'origin' : false,
+        backgroundColor: showFill ? (colorMode==='maroon'?'rgba(128,0,32,0.14)':'rgba(65,105,225,0.14)') : 'transparent',
+      };
+    }
+    return {...base, borderRadius:5, borderSkipped:false};
+  });
+}
+
+/* ── TRENDLINE ─────────────────────────── */
+function calcTrend(pts){
+  const n=pts.length; if(n<2) return null;
+  const xs=pts.map(p=>p.x), ys=pts.map(p=>p.y);
+  const mx=xs.reduce((a,b)=>a+b,0)/n, my=ys.reduce((a,b)=>a+b,0)/n;
+  let num=0,den=0;
+  for(let i=0;i<n;i++){num+=(xs[i]-mx)*(ys[i]-my);den+=(xs[i]-mx)**2;}
+  if(den===0) return null;
+  const m=num/den, b=my-m*mx;
+  const ss_res=ys.reduce((a,y,i)=>a+(y-(m*xs[i]+b))**2,0);
+  const ss_tot=ys.reduce((a,y)=>a+(y-my)**2,0);
+  const r2=ss_tot===0?1:1-ss_res/ss_tot;
+  return {m,b,r2};
+}
+
+function buildTrendDataset(pts,labels){
+  const t=calcTrend(pts); if(!t) return null;
+  const {m,b,r2}=t;
+  document.getElementById('trendBar').classList.add('show');
+  document.getElementById('tSlope').textContent=m.toFixed(3);
+  document.getElementById('tIntercept').textContent=b.toFixed(3);
+  document.getElementById('tR2').textContent=r2.toFixed(4);
+  document.getElementById('tEq').textContent=`y = ${m.toFixed(2)}x + ${b.toFixed(2)}`;
+  const xVals=labels.map((_,i)=>i);
+  return {
+    label:'Trend',
+    data:xVals.map(x=>+(m*x+b).toFixed(3)),
+    type:'line',
+    borderColor:'rgba(200,180,255,0.7)',
+    borderDash:[6,4],
+    borderWidth:2,
+    pointRadius:0,
+    fill:false,
+    tension:0
+  };
+}
+
+/* ── LABEL PLUGIN ─────────────────────── */
+const labelPlugin = {
+  id:'mervLabels',
+  afterDatasetsDraw(chart){
+    if(!showDataLabels) return;
+    const ctx=chart.ctx;
+    chart.data.datasets.forEach((ds,di)=>{
+      const meta=chart.getDatasetMeta(di);
+      if(meta.hidden) return;
+      meta.data.forEach((el,i)=>{
+        const val=ds.data[i];
+        const v=typeof val==='object'?val.y:val;
+        if(v===undefined||v===null) return;
+        ctx.save();
+        ctx.font="500 11px 'DM Mono', monospace";
+        ctx.fillStyle='rgba(240,236,250,0.85)';
+        ctx.textAlign='center';
+        ctx.fillText(v.toFixed?.(1)??v, el.x, el.y-10);
+        ctx.restore();
+      });
+    });
+  }
+};
+
+/* ── BUILD CONFIG ─────────────────────── */
+function buildConfig(){
+  const gc = showGrid?'rgba(255,255,255,0.07)':'transparent';
+  const tc = '#5a4a7a';
+  const mf = {family:"'DM Mono', monospace", size:11};
+  const tooltip = {
+    backgroundColor:'rgba(10,6,18,0.94)',
+    borderColor:'rgba(255,255,255,0.14)',borderWidth:1,
+    titleColor:'#a0b8ff',bodyColor:'#f0ecfa',padding:10,
+    callbacks:{}
+  };
+
+  // SCATTER — 4 quadrant
+  if(chartType==='scatter'){
+    const dss = buildDatasets();
+    if(showTrend && points.length>=2){
+      const t=calcTrend(points);
+      if(t){
+        const xs=points.map(p=>p.x);
+        const mn=Math.min(...xs), mx=Math.max(...xs);
+        dss.push({label:'Trend',data:[{x:mn,y:t.m*mn+t.b},{x:mx,y:t.m*mx+t.b}],
+          type:'line',borderColor:'rgba(200,180,255,0.65)',borderDash:[6,4],
+          borderWidth:2,pointRadius:0,fill:false,tension:0});
+        document.getElementById('trendBar').classList.add('show');
+        document.getElementById('tSlope').textContent=t.m.toFixed(3);
+        document.getElementById('tIntercept').textContent=t.b.toFixed(3);
+        document.getElementById('tR2').textContent=t.r2.toFixed(4);
+        document.getElementById('tEq').textContent=`y = ${t.m.toFixed(2)}x + ${t.b.toFixed(2)}`;
+      }
+    } else { document.getElementById('trendBar').classList.remove('show'); }
+
+    const allX=points.map(p=>p.x), allY=points.map(p=>p.y);
+    const xPad=Math.max(5,Math.ceil((Math.max(...allX,5)-Math.min(...allX,-5))*0.15));
+    const yPad=Math.max(5,Math.ceil((Math.max(...allY,5)-Math.min(...allY,-5))*0.15));
+    const xMin=Math.min(...allX,-5)-xPad, xMax=Math.max(...allX,5)+xPad;
+    const yMin=Math.min(...allY,-5)-yPad, yMax=Math.max(...allY,5)+yPad;
+
+    return {
+      type:'scatter',data:{datasets:dss},
+      plugins:[labelPlugin],
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:true,labels:{color:'#a898c8',font:mf,boxWidth:10}},tooltip:{...tooltip,callbacks:{label:ctx=>`${ctx.dataset.label}: (${ctx.parsed.x}, ${ctx.parsed.y})`}}},
+        scales:{
+          x:{min:xMin,max:xMax,grid:{color:gc},border:{color:'rgba(255,255,255,0.18)'},ticks:{color:tc,font:mf},
+            title:{display:true,text:'X →',color:'#7060a0',font:{family:"'Outfit'",size:12}},
+            afterBuildTicks(ax){ax.ticks=ax.ticks.filter(t=>t.value!==0);}
+          },
+          y:{min:yMin,max:yMax,grid:{color:gc},border:{color:'rgba(255,255,255,0.18)'},ticks:{color:tc,font:mf},
+            title:{display:true,text:'Y ↑',color:'#7060a0',font:{family:"'Outfit'",size:12}},
+          }
+        },
+        // draw quadrant axes
+        animation:{onComplete(ctx){drawQuadrantAxes(ctx.chart);}}
+      }
+    };
+  }
+
+  // BUBBLE
+  if(chartType==='bubble'){
+    const dss=buildDatasets();
+    return {
+      type:'bubble',data:{datasets:dss},
+      plugins:[labelPlugin],
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:true,labels:{color:'#a898c8',font:mf,boxWidth:10}},tooltip:{...tooltip,callbacks:{label:ctx=>`${ctx.raw.label||''} (${ctx.raw.x}, ${ctx.raw.y}) r=${ctx.raw.r}`}}},
+        scales:{x:{grid:{color:gc},ticks:{color:tc,font:mf}},y:{grid:{color:gc},ticks:{color:tc,font:mf},beginAtZero:true}}
+      }
+    };
+  }
+
+  // RADAR
+  if(chartType==='radar'){
+    const dss=buildDatasets();
+    return {
+      type:'radar',data:{labels:points.map(p=>p.label),datasets:dss},
+      plugins:[labelPlugin],
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip},
+        scales:{r:{grid:{color:gc},ticks:{color:tc,font:mf,backdropColor:'transparent'},pointLabels:{color:'#a898c8',font:mf}}}
+      }
+    };
+  }
+
+  // DOUGHNUT
+  if(chartType==='doughnut'){
+    const dss=buildDatasets();
+    return {
+      type:'doughnut',data:{labels:points.map(p=>p.label),datasets:dss},
+      plugins:[labelPlugin],
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:true,position:'right',labels:{color:'#a898c8',font:mf}},tooltip}
+      }
+    };
+  }
+
+  // HORIZONTAL BAR
+  if(chartType==='horizontalBar'){
+    const dss=buildDatasets();
+    return {
+      type:'bar',
+      data:{labels:points.map(p=>p.label),datasets:dss},
+      plugins:[labelPlugin],
+      options:{
+        indexAxis:'y',
+        responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:dss.length>1,labels:{color:'#a898c8',font:mf,boxWidth:10}},tooltip},
+        scales:{
+          x:{grid:{color:gc},ticks:{color:tc,font:mf},beginAtZero:true},
+          y:{grid:{color:gc},ticks:{color:tc,font:mf,autoSkip:false}}
+        }
+      }
+    };
+  }
+
+  // BAR / LINE
+  const dss=buildDatasets();
+  const labels=[...new Set(points.map(p=>p.label))];
+  if(showTrend && chartType==='line' && points.length>=2){
+    const td=buildTrendDataset(points,labels);
+    if(td) dss.push(td);
+  } else { document.getElementById('trendBar').classList.remove('show'); }
+
+  return {
+    type:chartType==='line'?'line':'bar',
+    data:{labels,datasets:dss},
+    plugins:[labelPlugin],
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:dss.length>1,labels:{color:'#a898c8',font:mf,boxWidth:10}},
+        tooltip
+      },
+      scales:{
+        x:{grid:{color:gc},ticks:{color:tc,font:mf,autoSkip:false,maxRotation:30}},
+        y:{grid:{color:gc},ticks:{color:tc,font:mf},beginAtZero:true}
+      }
+    }
+  };
+}
+
+/* ── QUADRANT AXES (drawn on canvas) ─── */
+function drawQuadrantAxes(ch){
+  const ctx=ch.ctx;
+  const xScale=ch.scales.x, yScale=ch.scales.y;
+  const x0=xScale.getPixelForValue(0);
+  const y0=yScale.getPixelForValue(0);
+  ctx.save();
+  ctx.strokeStyle='rgba(255,255,255,0.28)';
+  ctx.lineWidth=1.5;
+  ctx.setLineDash([]);
+  // vertical axis
+  ctx.beginPath(); ctx.moveTo(x0,ch.chartArea.top); ctx.lineTo(x0,ch.chartArea.bottom); ctx.stroke();
+  // horizontal axis
+  ctx.beginPath(); ctx.moveTo(ch.chartArea.left,y0); ctx.lineTo(ch.chartArea.right,y0); ctx.stroke();
+  ctx.restore();
+}
+
+/* ── RENDER ─────────────────────────────── */
+function renderChart(){
+  const canvas=document.getElementById('myChart');
+  if(chart){chart.destroy();chart=null;}
+  if(points.length) chart=new Chart(canvas,buildConfig());
+  renderStats();
+  renderTable();
+  updateHeader();
+}
+
+/* ── STATS ──────────────────────────────── */
+function renderStats(){
+  const g=document.getElementById('statsGrid');
+  if(!points.length){g.innerHTML='';return;}
+  const vals=points.map(p=>p.y);
+  const sum=vals.reduce((a,b)=>a+b,0);
+  const avg=(sum/vals.length).toFixed(2);
+  const mx=Math.max(...vals), mn=Math.min(...vals);
+  const sorted=[...vals].sort((a,b)=>a-b);
+  const med=vals.length%2===0?(sorted[vals.length/2-1]+sorted[vals.length/2])/2:sorted[Math.floor(vals.length/2)];
+  const variance=vals.reduce((a,v)=>a+(v-parseFloat(avg))**2,0)/vals.length;
+  const std=Math.sqrt(variance).toFixed(2);
+  const q1pts=points.filter(p=>p.x>0&&p.y>0).length;
+  const q2pts=points.filter(p=>p.x<0&&p.y>0).length;
+  const q3pts=points.filter(p=>p.x<0&&p.y<0).length;
+  const q4pts=points.filter(p=>p.x>0&&p.y<0).length;
+
+  const cards=[
+    ['Count',vals.length,''],['Sum',sum,''],['Average',avg,'rv'],
+    ['Median',med.toFixed(2),''],['Std Dev',std,''],['Max',mx,'mv'],
+    ['Min',mn,''],['Range',(mx-mn),''],
+    ...(chartType==='scatter'?[['Q-I (+,+)',q1pts,'rv'],['Q-II (−,+)',q2pts,'mv'],['Q-III (−,−)',q3pts,'mv'],['Q-IV (+,−)',q4pts,'rv']]:[])
+  ];
+  g.innerHTML=cards.map(([l,v,c])=>`<div class="stat-card"><div class="stat-label">${l}</div><div class="stat-val ${c}">${v}</div></div>`).join('');
+}
+
+/* ── TABLE ──────────────────────────────── */
+function renderTable(){
+  const tbody=document.getElementById('pointsBody');
+  const empty=document.getElementById('emptyState');
+  if(!points.length){tbody.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+  tbody.innerHTML=points.map((p,i)=>`
+    <tr>
+      <td class="row-num">${i+1}</td>
+      <td><div class="dot-cell"><div class="dot" style="background:${p.color}"></div></div></td>
+      <td><input class="edit-input narrow" id="el-${i}" value="${p.label}" /></td>
+      <td><input class="edit-input" id="ex-${i}" type="number" value="${p.x}" step="any" /></td>
+      <td><input class="edit-input" id="ey-${i}" type="number" value="${p.y}" step="any" /></td>
+      <td><input class="edit-input narrow" id="er-${i}" type="number" value="${p.r||10}" step="any" /></td>
+      <td><select class="edit-input" id="eds-${i}" style="width:90px">
+        ${DS_NAMES.map((n,di)=>`<option value="${di}" ${p.ds===di?'selected':''}>${n}</option>`).join('')}
+      </select></td>
+      <td><button class="btn-save" onclick="savePoint(${i})">Save</button><button class="btn-del" onclick="deletePoint(${i})">Del</button></td>
+    </tr>`).join('');
+}
+
+/* ── HEADER ─────────────────────────────── */
+function updateHeader(){
+  document.getElementById('hPoints').textContent=points.length;
+  const sets=new Set(points.map(p=>p.ds)).size;
+  document.getElementById('hSets').textContent=sets||1;
+  if(!points.length){document.getElementById('hAvg').textContent='—';return;}
+  const avg=(points.reduce((a,b)=>a+b.y,0)/points.length).toFixed(1);
+  document.getElementById('hAvg').textContent=avg;
+}
+
+/* ── ADD / EDIT / DELETE ─────────────────── */
+function addPoint(){
+  const label=document.getElementById('inLabel').value.trim()||'P';
+  const x=parseFloat(document.getElementById('inX').value)||0;
+  const yRaw=document.getElementById('inY').value;
+  if(yRaw===''){showToast('Enter a Y value!','error');return;}
+  const y=parseFloat(yRaw)||0;
+  const r=parseFloat(document.getElementById('inR').value)||10;
+  const color=document.getElementById('inColor').value;
+  const ds=parseInt(document.getElementById('inDataset').value)||0;
+  history.push(JSON.parse(JSON.stringify(points)));
+  if(history.length>30) history.shift();
+  points.push({label,x,y,r,color,ds});
+  const code=label.charCodeAt(0);
+  document.getElementById('inLabel').value=code>=65&&code<90?String.fromCharCode(code+1):label+'2';
+  document.getElementById('inX').value=x+1;
+  document.getElementById('inY').value='';
+  renderChart();
+  showToast(`Point "${label}" added!`,'success');
+}
+
+function deletePoint(i){
+  history.push(JSON.parse(JSON.stringify(points)));
+  const label=points[i].label;
+  points.splice(i,1);
+  renderChart();
+  showToast(`"${label}" deleted.`);
+}
+
+function savePoint(i){
+  history.push(JSON.parse(JSON.stringify(points)));
+  points[i].label=document.getElementById('el-'+i).value.trim()||points[i].label;
+  points[i].x=parseFloat(document.getElementById('ex-'+i).value)||0;
+  points[i].y=parseFloat(document.getElementById('ey-'+i).value)||0;
+  points[i].r=parseFloat(document.getElementById('er-'+i).value)||10;
+  points[i].ds=parseInt(document.getElementById('eds-'+i).value)||0;
+  renderChart();
+  showToast('Point updated!','success');
+}
+
+function clearAll(){
+  if(!points.length) return;
+  history.push(JSON.parse(JSON.stringify(points)));
+  points=[];
+  renderChart();
+  showToast('All points cleared.');
+}
+
+function undoLast(){
+  if(!history.length){showToast('Nothing to undo.','error');return;}
+  points=history.pop();
+  renderChart();
+  showToast('Undo successful.');
+}
+
+/* ── SORT ────────────────────────────────── */
+function sortPoints(key){
+  if(key==='label') points.sort((a,b)=>a.label.localeCompare(b.label));
+  else if(key==='y') points.sort((a,b)=>b.y-a.y);
+  else if(key==='x') points.sort((a,b)=>a.x-b.x);
+  renderChart();
+  showToast('Points sorted.');
+}
+
+/* ── ANNOTATION ──────────────────────────── */
+function openAnnotation(){document.getElementById('annotationModal').classList.add('open');}
+function closeAnnotation(){document.getElementById('annotationModal').classList.remove('open');}
+function addAnnotation(){
+  const text=document.getElementById('annotText').value.trim();
+  const x=parseFloat(document.getElementById('annotX').value)||0;
+  const y=parseFloat(document.getElementById('annotY').value)||0;
+  if(!text){showToast('Enter annotation text.','error');return;}
+  // Add as a special labeled point
+  history.push(JSON.parse(JSON.stringify(points)));
+  points.push({label:'📌'+text,x,y,r:6,color:'#d0b0ff',ds:0});
+  closeAnnotation();
+  renderChart();
+  showToast('Annotation added!');
+}
+
+/* ── IMPORT CSV ──────────────────────────── */
+function importCSV(e){
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=evt=>{
+    const lines=evt.target.result.split('\n').filter(l=>l.trim());
+    const header=lines[0].toLowerCase().split(',').map(h=>h.trim());
+    const li=header.indexOf('label'), xi=header.indexOf('x'), yi=header.indexOf('y');
+    const ri=header.indexOf('r'), ci=header.indexOf('color');
+    if(xi===-1||yi===-1){showToast('CSV needs x and y columns.','error');return;}
+    history.push(JSON.parse(JSON.stringify(points)));
+    let count=0;
+    lines.slice(1).forEach(line=>{
+      const cols=line.split(',').map(c=>c.trim());
+      const x=parseFloat(cols[xi]), y=parseFloat(cols[yi]);
+      if(isNaN(x)||isNaN(y)) return;
+      points.push({
+        label: li>=0&&cols[li] ? cols[li] : 'P'+count,
+        x, y,
+        r: ri>=0&&cols[ri] ? parseFloat(cols[ri])||10 : 10,
+        color: ci>=0&&cols[ci] ? cols[ci] : '#800020',
+        ds:0
+      });
+      count++;
+    });
+    renderChart();
+    showToast(`Imported ${count} points from CSV!`,'success');
+  };
+  reader.readAsText(file);
+}
+
+/* ── SAMPLE DATA ──────────────────────────── */
+function loadSampleData(){
+  history.push(JSON.parse(JSON.stringify(points)));
+  points=[
+    {label:'Jan',x:1,y:42,r:12,color:'#800020',ds:0},
+    {label:'Feb',x:2,y:38,r:10,color:'#800020',ds:0},
+    {label:'Mar',x:3,y:55,r:16,color:'#800020',ds:0},
+    {label:'Apr',x:4,y:61,r:18,color:'#800020',ds:0},
+    {label:'May',x:5,y:47,r:14,color:'#800020',ds:0},
+    {label:'Jun',x:6,y:72,r:20,color:'#800020',ds:0},
+    {label:'Jan',x:1,y:28,r:10,color:'#4169e1',ds:1},
+    {label:'Feb',x:2,y:34,r:12,color:'#4169e1',ds:1},
+    {label:'Mar',x:3,y:29,r:10,color:'#4169e1',ds:1},
+    {label:'Apr',x:4,y:45,r:14,color:'#4169e1',ds:1},
+    {label:'May',x:5,y:52,r:16,color:'#4169e1',ds:1},
+    {label:'Jun',x:6,y:49,r:15,color:'#4169e1',ds:1},
+    // quadrant spread for scatter
+    {label:'Q1a',x:3,y:8,r:8,color:'#7050cc',ds:2},
+    {label:'Q2a',x:-4,y:6,r:8,color:'#7050cc',ds:2},
+    {label:'Q3a',x:-2,y:-5,r:8,color:'#7050cc',ds:2},
+    {label:'Q4a',x:5,y:-7,r:8,color:'#7050cc',ds:2},
+  ];
+  renderChart();
+  showToast('Sample data loaded!','success');
+}
+
+/* ── SNAPSHOT / HISTORY ──────────────────── */
+function saveSnapshot(){
+  const name=`Snapshot ${snapshots.length+1} — ${new Date().toLocaleTimeString()}`;
+  snapshots.push({name,points:JSON.parse(JSON.stringify(points)),type:chartType});
+  renderHistory();
+  showToast(`Saved: ${name}`,'success');
+}
+
+function renderHistory(){
+  const list=document.getElementById('historyList');
+  if(!snapshots.length){list.innerHTML='<div class="empty-state" style="padding:18px;">No snapshots saved yet.</div>';return;}
+  list.innerHTML=snapshots.map((s,i)=>`
+    <div class="history-item">
+      <div><div class="hist-name">${s.name}</div><div class="hist-meta">${s.points.length} pts · ${s.type}</div></div>
+      <button class="btn-restore" onclick="restoreSnapshot(${i})">Restore</button>
+    </div>`).join('');
+}
+
+function restoreSnapshot(i){
+  history.push(JSON.parse(JSON.stringify(points)));
+  points=JSON.parse(JSON.stringify(snapshots[i].points));
+  chartType=snapshots[i].type;
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    b.classList.toggle('active',b.dataset.type===chartType);
+  });
+  renderChart();
+  showToast('Snapshot restored!','success');
+}
+
+/* ── EXPORT ──────────────────────────────── */
+function exportPNG(){
+  if(!chart){showToast('No chart to export.','error');return;}
+  const a=document.createElement('a');
+  a.href=chart.toBase64Image('image/png',1);
+  a.download='merv-graphs.png';
+  a.click();
+  showToast('Chart exported as PNG!','success');
+}
+
+function exportCSV(){
+  if(!points.length){showToast('No data to export.','error');return;}
+  const rows=['label,x,y,r,color,dataset',...points.map(p=>`${p.label},${p.x},${p.y},${p.r||10},${p.color},${DS_NAMES[p.ds]||'Dataset 1'}`)];
+  const blob=new Blob([rows.join('\n')],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='merv-graphs-data.csv';
+  a.click();
+  showToast('Data exported as CSV!','success');
+}
+
+/* ── TOAST ──────────────────────────────── */
+let toastTimer=null;
+function showToast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast show '+(type||'');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+/* ── KEYBOARD SHORTCUTS ──────────────────── */
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT') return;
+  if(e.key==='z'&&(e.ctrlKey||e.metaKey)) undoLast();
+  if(e.key==='s'&&(e.ctrlKey||e.metaKey)){e.preventDefault();saveSnapshot();}
+});
+
+document.getElementById('inY').addEventListener('keydown',e=>{if(e.key==='Enter') addPoint();});
+document.getElementById('inX').addEventListener('keydown',e=>{if(e.key==='Enter') document.getElementById('inY').focus();});
+
+/* ── INIT ────────────────────────────────── */
+renderChart();
+</script>
+
+<!-- ═══════════════════════════════════════════
+     PWA — MANIFEST + SERVICE WORKER + INSTALL BANNER
+     ═══════════════════════════════════════════ -->
+
+<!-- iOS "Add to Home Screen" Banner UI -->
+<style>
+/* Install banner */
+#pwa-banner{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;
+  background:linear-gradient(135deg,#1a0f2e,#0d1840);
+  border-top:1px solid rgba(255,255,255,0.14);
+  padding:14px 20px 20px;
+  box-shadow:0 -8px 32px rgba(0,0,0,0.5);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  animation:slideUp 0.35s ease;
+}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+#pwa-banner.show{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.pwa-icon{width:52px;height:52px;border-radius:13px;flex-shrink:0;box-shadow:0 4px 14px rgba(128,0,32,0.5);}
+.pwa-text{flex:1;min-width:180px;}
+.pwa-title{font-family:'DM Serif Display',serif;font-size:17px;color:#f0ecfa;margin-bottom:3px;}
+.pwa-sub{font-size:12px;color:#a898c8;line-height:1.4;}
+.pwa-actions{display:flex;gap:8px;align-items:center;}
+.pwa-btn-install{
+  padding:9px 20px;
+  background:linear-gradient(135deg,#800020,#4169e1);
+  color:#fff;border:none;border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;white-space:nowrap;
+  box-shadow:0 3px 14px rgba(128,0,32,0.45);
+}
+.pwa-btn-install:hover{opacity:0.9;}
+.pwa-btn-dismiss{
+  padding:9px 14px;background:transparent;
+  color:#a898c8;border:1px solid rgba(255,255,255,0.15);
+  border-radius:8px;font-family:'Outfit',sans-serif;font-size:13px;
+  cursor:pointer;white-space:nowrap;
+}
+.pwa-btn-dismiss:hover{color:#f0ecfa;}
+
+/* iOS-specific instructions sheet */
+#ios-sheet{
+  display:none;position:fixed;inset:0;z-index:10000;
+  background:rgba(5,2,14,0.75);backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  align-items:flex-end;justify-content:center;
+}
+#ios-sheet.show{display:flex;}
+.ios-card{
+  background:#1a0f2e;border:1px solid rgba(255,255,255,0.15);
+  border-radius:20px 20px 0 0;padding:24px 24px 40px;
+  width:100%;max-width:500px;
+  animation:slideUp 0.3s ease;
+}
+.ios-card h3{font-family:'DM Serif Display',serif;font-size:20px;color:#f0ecfa;margin-bottom:6px;}
+.ios-card p{font-size:13px;color:#a898c8;margin-bottom:20px;line-height:1.5;}
+.ios-steps{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.ios-step{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.05);border-radius:10px;padding:12px 14px;}
+.ios-step-num{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#800020,#4169e1);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ios-step-text{font-size:13px;color:#d0c8e8;line-height:1.4;}
+.ios-step-text b{color:#f0ecfa;}
+.ios-icon-inline{display:inline-block;background:rgba(255,255,255,0.1);border-radius:4px;padding:1px 5px;font-size:15px;line-height:1;vertical-align:middle;}
+.btn-close-ios{width:100%;margin-top:20px;padding:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#a898c8;font-family:'Outfit',sans-serif;font-size:14px;cursor:pointer;}
+.btn-close-ios:hover{background:rgba(255,255,255,0.13);}
+</style>
+
+<!-- Install banner element -->
+<div id="pwa-banner">
+  <img class="pwa-icon" id="pwa-banner-icon" alt="Merv Graphs icon" />
+  <div class="pwa-text">
+    <div class="pwa-title">Merv Graphs</div>
+    <div class="pwa-sub">Add to your Home Screen for the full app experience — works offline too.</div>
+  </div>
+  <div class="pwa-actions">
+    <button class="pwa-btn-install" id="pwa-install-btn">Add to Home Screen</button>
+    <button class="pwa-btn-dismiss" onclick="dismissBanner()">Not now</button>
+  </div>
+</div>
+
+<!-- iOS instructions sheet -->
+<div id="ios-sheet">
+  <div class="ios-card">
+    <h3>📲 Add Merv Graphs to Home Screen</h3>
+    <p>iOS doesn't use a pop-up for this — follow these quick steps in Safari:</p>
+    <ol class="ios-steps">
+      <li class="ios-step">
+        <div class="ios-step-num">1</div>
+        <div class="ios-step-text">Tap the <b>Share</b> button <span class="ios-icon-inline">⬆</span> at the bottom of your Safari browser</div>
+      </li>
+      <li class="ios-step">
+        <div class="ios-step-num">2</div>
+        <div class="ios-step-text">Scroll down and tap <b>"Add to Home Screen"</b> <span class="ios-icon-inline">＋</span></div>
+      </li>
+      <li class="ios-step">
+        <div class="ios-step-num">3</div>
+        <div class="ios-step-text">Tap <b>"Add"</b> in the top-right corner — Merv Graphs will appear on your Home Screen!</div>
+      </li>
+    </ol>
+    <button class="btn-close-ios" onclick="closeIOSSheet()">Got it!</button>
+  </div>
+</div>
+
+<script>
+/* ── PWA SETUP ─────────────────────────────────── */
+
+// 1) Inject the Web App Manifest as a Blob so it works from file:// or any host
+(function(){
+  const manifest = {
+    name: "Merv Graphs",
+    short_name: "Merv Graphs",
+    description: "Interactive Chart Builder — bar, line, scatter, bubble and more",
+    start_url: "./",
+    display: "standalone",
+    orientation: "any",
+    background_color: "#0a0612",
+    theme_color: "#0a0612",
+    categories: ["education","utilities","productivity"],
+    icons: [
+      { src: document.querySelector('link[rel="icon"]').href, sizes: "192x192", type: "image/png", purpose: "any maskable" },
+      { src: document.querySelector('link[rel="apple-touch-icon"]').href, sizes: "180x180", type: "image/png" }
+    ]
+  };
+  const blob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  document.getElementById('pwa-manifest').href = url;
+
+  // Also set the banner icon from the apple-touch-icon
+  const iconHref = document.querySelector('link[rel="apple-touch-icon"]').href;
+  document.getElementById('pwa-banner-icon').src = iconHref;
+})();
+
+// 2) Service Worker (inline as Blob) — cache-first for offline support
+(function(){
+  const swCode = `
+const CACHE = 'merv-graphs-v1';
+const ASSETS = [self.location.href];
+
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    caches.match(e.request).then(cached => cached || fetch(e.request).catch(() => cached))
+  );
+});
+`;
+  if('serviceWorker' in navigator){
+    const blob = new Blob([swCode], {type:'application/javascript'});
+    const swURL = URL.createObjectURL(blob);
+    navigator.serviceWorker.register(swURL, {scope:'./'})
+      .then(() => console.log('[Merv Graphs] Service worker registered ✓'))
+      .catch(e => console.warn('[Merv Graphs] SW registration skipped:', e.message));
+  }
+})();
+
+// 3) Detect iOS vs Android/Chrome and show appropriate install UI
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const isInStandaloneMode = window.navigator.standalone === true
+  || window.matchMedia('(display-mode: standalone)').matches;
+const dismissed = sessionStorage.getItem('pwa-dismissed');
+
+let deferredPrompt = null;
+
+// Chrome/Android: capture the beforeinstallprompt event
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if(!isInStandaloneMode && !dismissed) showBanner();
+});
+
+// iOS: show banner if in Safari (not already installed)
+if(isIOS && !isInStandaloneMode && !dismissed){
+  // Small delay so page has rendered
+  setTimeout(showBanner, 1800);
+}
+
+function showBanner(){
+  document.getElementById('pwa-banner').classList.add('show');
+}
+
+function dismissBanner(){
+  document.getElementById('pwa-banner').classList.remove('show');
+  sessionStorage.setItem('pwa-dismissed','1');
+}
+
+function closeIOSSheet(){
+  document.getElementById('ios-sheet').classList.remove('show');
+  dismissBanner();
+}
+
+document.getElementById('pwa-install-btn').addEventListener('click', async () => {
+  if(isIOS){
+    // Show step-by-step iOS instructions
+    document.getElementById('ios-sheet').classList.add('show');
+  } else if(deferredPrompt){
+    // Chrome/Android: trigger native install dialog
+    deferredPrompt.prompt();
+    const {outcome} = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    dismissBanner();
+    if(outcome==='accepted') showToast('Merv Graphs installed! 🎉','success');
+  } else {
+    showToast('Open in Safari on iOS, or Chrome on Android to install.','');
+  }
+});
+
+// Hide banner once app is installed
+window.addEventListener('appinstalled', () => {
+  dismissBanner();
+  showToast('Merv Graphs added to Home Screen! 🎉','success');
+});
+</script>
+</body>
+</html>
